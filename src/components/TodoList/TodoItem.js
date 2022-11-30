@@ -1,10 +1,6 @@
 import React from 'react';
 import styles from './todoItem.less';
-import useApi from "../../hooks/api";
-
-const TodoItem = ({id,title,description,checked,date,url}) => {
-
-    const { actions } = useApi()
+const TodoItem = ({onDelete,id,title,description,checked,date,url}) => {
 
     return (
         <li className={styles.todoCard}>
@@ -21,7 +17,7 @@ const TodoItem = ({id,title,description,checked,date,url}) => {
                 <p>{date}</p>
             </div>
             <button>edit</button>
-            <button onClick={() => actions.onDeleteTodo(id)}>delete</button>
+            <button onClick={onDelete}>delete</button>
         </li>
     );
 };
