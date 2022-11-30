@@ -1,31 +1,10 @@
 import styles from './app.less'
 import Form from "./components/Form/Form";
-import {useEffect, useState} from "react";
 import TodoList from "./components/TodoList/TodoList";
-import {createTodo, deleteTodo, getTodos} from "./api/api";
+import useApi from "./hooks/useApi";
 
 const App = () => {
-    const [todos, setTodos] = useState([])
-    const [isLoading, setIsLoading] = useState([])
-    console.log(todos)
-
-    useEffect(() => {
-        getTodos('todos').then(setTodos)
-    },[])
-
-    const handleSubmit = (data) => {
-        createTodo({
-            ...data
-        }).then(todo => {
-            setTodos([...todos, todo])
-        })
-    }
-
-    async function onDeleteTodo (id) {
-        deleteTodo(id).then(todoId => {
-            setTodos([...todos.filter(todo => todo.id !== todoId)])
-        })
-    }
+    const {data : {isLoading, todos}, actions : {handleSubmit, setIsLoading, onDeleteTodo}} = useApi()
 
     return (
         <div className={styles.wrapper}>
