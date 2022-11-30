@@ -17,7 +17,7 @@ const TodoItem = ({onDelete,id,title,description,checked,date,url}) => {
                 <p>{date}</p>
             </div>
             <button>edit</button>
-            <button onClick={onDelete}>delete</button>
+            <button onClick={() => onDelete(id)}>delete</button>
         </li>
     );
 };

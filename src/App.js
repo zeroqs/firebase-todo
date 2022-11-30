@@ -4,11 +4,11 @@ import TodoList from "./components/TodoList/TodoList";
 import useApi from "./hooks/useApi";
 
 const App = () => {
-    const {data : {isLoading, todos}, actions : {handleSubmit, setIsLoading, onDeleteTodo}} = useApi()
+    const { data : { todos }, actions : { handleSubmit, onDeleteTodo } } = useApi()
 
     return (
         <div className={styles.wrapper}>
-            <Form isLoading={isLoading} setIsLoading={setIsLoading} onSubmit={handleSubmit}/>
+            <Form onSubmit={handleSubmit}/>
             <TodoList onDelete={onDeleteTodo} todos={todos}/>
         </div>
     );

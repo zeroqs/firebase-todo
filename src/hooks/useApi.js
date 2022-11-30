@@ -7,7 +7,6 @@ export default function useApi() {
     const [todos, setTodos] = useState([])
 
     const [isLoading, setIsLoading] = useState([])
-    console.log(todos)
 
     useEffect(() => {
         getTodos('todos').then(setTodos)
