@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './todoItem.less';
-const TodoItem = ({onDelete,id,title,description,checked,date,url}) => {
+
+const TodoItem = ({onDelete ,id ,title ,description  ,date ,url}) => {
+
 
     return (
         <li className={styles.todoCard}>
@@ -13,12 +15,11 @@ const TodoItem = ({onDelete,id,title,description,checked,date,url}) => {
                 url ? <a href={url}>Скачать файл</a> : null
             }
             <div className={styles.todoCheck}>
-                <input type="checkbox" />
                 <p>{date}</p>
             </div>
-            <button>edit</button>
             <button onClick={() => onDelete(id)}>delete</button>
         </li>
+
     );
 };
 
