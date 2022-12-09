@@ -11,7 +11,7 @@ export function getTodos(collection) {
         })
         .catch((error) => {
             return error
-        });
+        }); 
 }
 
 export function createTodo(data) {

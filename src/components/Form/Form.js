@@ -10,6 +10,7 @@ const Form = ({onSubmit}) => {
     }
 
     return (
+
         <form onSubmit={onFormSubmit} className={styles.form}>
             <input onChange={(e) => changeTitle(e.target.value)} value={title} type="text" required placeholder="Task"/>
             <input className={styles.input_data} type="submit" value="Add todo"/>
