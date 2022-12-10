@@ -1,11 +1,14 @@
 import React from "react";
 import {storage} from "../firebase";
+import {useDispatch} from "react-redux";
+import {createTodo} from "../redux/features/ChangeTodo/changeTodoSlice";
 
 export default function useForm() {
     const [title,setTitle] = React.useState('')
     const [description,setDescription] = React.useState('')
     const [date,setDate] = React.useState('')
     const [file, setFile] = React.useState('');
+    const dispatch = useDispatch()
 
 
     function handleChange(e) {
@@ -33,9 +36,9 @@ export default function useForm() {
         await ref.put(file);
         const url = await ref.getDownloadURL();
         if (file.length === 0) {
-            onSubmit({title, description,date})
+            dispatch(createTodo({title, description,date}))
         } else {
-            onSubmit({title, description,date,url})
+            dispatch(createTodo({title, description,date, url}))
         }
         setFile('');
         setTitle('')

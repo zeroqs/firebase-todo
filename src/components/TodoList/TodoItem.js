@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './todoItem.less';
+import {useDispatch} from "react-redux";
+import {deleteTodo} from "../../redux/features/ChangeTodo/changeTodoSlice";
 
-const TodoItem = ({onDelete ,id ,title ,description  ,date ,url}) => {
+const TodoItem = ({id ,title ,description  ,date ,url}) => {
+
+    const dispatch = useDispatch()
 
 
     return (
@@ -17,7 +21,7 @@ const TodoItem = ({onDelete ,id ,title ,description  ,date ,url}) => {
             <div className={styles.todoCheck}>
                 <p>{date}</p>
             </div>
-            <button onClick={() => onDelete(id)}>delete</button>
+            <button onClick={() => dispatch(deleteTodo(id))}>delete</button>
         </li>
 
     );
